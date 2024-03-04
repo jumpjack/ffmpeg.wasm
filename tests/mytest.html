@@ -3,7 +3,8 @@
     <h3>Quick Test</h3>
     <video id="output-video" controls></video><br/>
     <input type="file" id="uploader">
-    <p id="message"></p>
+    Message:
+    <p id="message"></p>   
     <script type="module">
       import { FFmpeg } from "/packages/ffmpeg/dist/esm/index.js";
       import { fetchFile } from "/packages/util/dist/esm/index.js";
@@ -13,6 +14,7 @@
         const message = document.getElementById('message');
         if (ffmpeg === null) {
           ffmpeg = new FFmpeg();
+console.log("FFMPEG=",ffmpeg);          
           ffmpeg.on("log", ({ message }) => {
             console.log(message);
           })
@@ -24,6 +26,8 @@
           });
         }
         const { name } = files[0];
+console.log("name=",name);          
+        
         await ffmpeg.writeFile(name, await fetchFile(files[0]));
         message.innerHTML = 'Start transcoding';
         await ffmpeg.exec(['-i', name,  '-vf v360=fisheye:e:ih_fov=200:iv_fov=200', 'output.jpg']);
