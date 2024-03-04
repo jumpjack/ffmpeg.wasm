@@ -6,8 +6,8 @@
     Message:
     <p id="message"></p>   
     <script type="module">
-      import { FFmpeg } from "/packages/ffmpeg/dist/esm/index.js";
-      import { fetchFile } from "/packages/util/dist/esm/index.js";
+      import { FFmpeg } from "https://jumpjack.github.io/ffmpeg.wasm/packages/ffmpeg/dist/esm/index.js";
+      import { fetchFile } from "https://jumpjack.github.io/ffmpeg.wasm/packages/util/dist/esm/index.js";
       let ffmpeg = null;
 
       const transcode = async ({ target: { files } }) => {
